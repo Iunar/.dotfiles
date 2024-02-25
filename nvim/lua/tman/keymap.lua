@@ -26,7 +26,6 @@ remap.Nopts("<leader>h", "'A")
 remap.Nopts("<leader>t", "'B")
 remap.Nopts("<leader>n", "'C")
 remap.Nopts("<leader>s", "'D")
-remap.Nopts("<leader>m", ":!make;./build/bin<CR>")
 
 remap.Nopts("<leader>g", ":ObsidianFollowLink<CR>")
 -- remap.Nopts("<leader>t", "'B")
