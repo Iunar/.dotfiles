@@ -2,7 +2,7 @@ require("tman.options")
 require("tman.plugins")
 require("tman.keymap")
 require("tman.telescope")
-require("tman.lsp-cmp")
+--require("tman.lsp-cmp")
 require("tman.treesitter")
 require("tman.fold")
 
