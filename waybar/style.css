@@ -1,0 +1,32 @@
+
+* {
+	font-size: 14px;
+	font-family: JetBrainsMonoNF;
+	min-height: 4px;
+}
+
+window.barmain#waybar {
+    background: transparent;
+}
+
+window > box {
+
+	margin-top: 10px;
+	margin-right: 10px;
+	margin-left: 10px;
+	margin-bottom: 0px;
+
+	padding: 0px;
+
+	border-radius: 0px;
+	background-color: rgba(135, 245, 66, 1);
+	border-bottom: 4px solid rgba(43, 240, 50, 1);
+    color: rgba(22, 28, 20, 1);
+
+	/* 135, 245, 66 */
+
+}
+
+#clock {
+	margin-right: 8px;
+}
