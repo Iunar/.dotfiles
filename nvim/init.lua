@@ -2,7 +2,7 @@ require("tman.options")
 require("tman.plugins")
 require("tman.keymap")
 require("tman.telescope")
---require("tman.lsp-cmp")
+require("tman.lsp-cmp")
 require("tman.treesitter")
 require("tman.fold")
 
@@ -19,4 +19,4 @@ vim.cmd("let g:gruvbox_contrast_dark='hard'")
 vim.cmd("colorscheme gruvbox")
 
 ---- Transparent background
---vim.cmd("hi Normal guibg=NONE ctermbg=NONE")
+vim.cmd("hi Normal guibg=NONE ctermbg=NONE")

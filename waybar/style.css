@@ -9,6 +9,11 @@ window.barmain#waybar {
     background: transparent;
 }
 
+/*
+ * Red Palette
+ * 		https://lospec.com/palette-list/apollo
+ * */
+
 window > box {
 
 	margin-top: 10px;
@@ -19,14 +24,34 @@ window > box {
 	padding: 0px;
 
 	border-radius: 0px;
-	background-color: rgba(135, 245, 66, 1);
-	border-bottom: 4px solid rgba(43, 240, 50, 1);
-    color: rgba(22, 28, 20, 1);
+	background-color: rgba(165, 48, 48, 1);
+	border-bottom: 4px solid rgba(117, 36, 56, 1);
+    color: rgba(235, 237, 233, 1);
 
-	/* 135, 245, 66 */
+	/*
+	 * Green Colors
+	 * 	  background-color: rgba(135, 245, 66, 1);
+	 * 	  border-bottom: 4px solid rgba(43, 240, 50, 1);
+	 * 	  color: rgba(22, 28, 20, 1);
+	 * */
 
 }
 
+#workspaces button {
+    background: #a53030;
+    color: rgba(235, 237, 233, 1);
+	border-bottom: none;
+	border-radius: 0px;
+}
+
+#workspaces button:hover {
+	/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
+    background: #752438;
+	border: none;
+	box-shadow: inherit;
+    text-shadow: inherit;
+	padding: 0 10px;
+}
 #clock {
 	margin-right: 8px;
 }
