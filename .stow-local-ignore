@@ -1,0 +1,7 @@
+.zcompdump
+nixos
+.gitignore
+README.md
+wallpapers
+.zsh_history
+.zshrc
