@@ -1,4 +1,6 @@
 ---- Options ----------------------------------------
+-- Set leader
+vim.g.mapleader = " "
 -- Disable backups
 vim.o.backup = false
 -- Column highlighting
@@ -18,7 +20,7 @@ vim.o.sw = 4
 vim.o.ts = 4
 
 -- Relative line numbers
-vim.o.nu = true
+vim.o.nu = true 
 vim.o.rnu = true
 
 -- Disable highlight when search
@@ -27,7 +29,7 @@ vim.o.hls = false
 vim.o.ic = true
 
 -- Format options -> disable comment insert on newline
--- vim.opt.formatoptions:remove({"c","r","o"})
+--vim.opt.formatoptions:remove({"c","r","o"})
 -- This doesnt work because it is immediatly overriden by the default
 -- options in the default neovim ftplugin directory
 -- Thus a autocmd must be used to overwrite it everytime a buffer is entered;
