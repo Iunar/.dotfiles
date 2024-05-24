@@ -9,10 +9,10 @@
         "max-length": 50
     },
     "battery": {
-        "format": "{capacity}% {icon}",
-        "format-icons": ["!!!", "!", "~", "~+", "+++"]
+        "format": "|  {icon}  {capacity}%  |",
+		"format-icons": ["", "", "", "", ""]
     },
     "clock": {
-        "format-alt": "{:%a, %d. %b  %H:%M}"
+        "format": "  {:%a, %d. %b  %H:%M}  |"
     }
 }
