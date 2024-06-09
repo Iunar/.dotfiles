@@ -12,12 +12,15 @@ BLUE='#4d9be6'
 MINT='#30e1b9'
 GOLD='#f9c22b'
 
+# Get the host name of the machine (%m not working)
+HOST_NAME=$(cat /etc/hostname)
+
 # prompt components
 NEW_LINE=$'\n'
 TAB='    '
 DATE_TIME="%F{$MINT}%@%f"
 WORKING_DIR="%F{$BLUE}%~%f"
-HOST="%F{$PURPLE}%n%f%F{$GREEN}@%f%F{$RED}erebor%f"
+HOST="%F{$PURPLE}%n%f%F{$GREEN}@%f%F{$RED}$HOST_NAME%f"
 PROMPT="%F{$GOLD}$%f"
 
 # machine name escape character not working?
