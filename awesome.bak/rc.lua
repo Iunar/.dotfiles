@@ -46,11 +46,6 @@ beautiful.init("/home/tyler/.config/awesome/theme.lua")
 
 -- Glocal Rc.lua namespace
 RC = {}
-
-RC.primary_screen = screen[1]
-RC.primary_screen_w = RC.primary_screen.geometry.width
-RC.primary_screen_h = RC.primary_screen.geometry.height
-
 RC.vars = require("main.user-variables")
 modkey = RC.vars.modkey
 terminal = RC.vars.terminal
@@ -74,8 +69,7 @@ local bindings = {
 
 -- Object representation of decor directory
 local decor = {
-	tags = require("decor.tags"),
-	apps = require("decor.apps")
+	tags = require("decor.tags")
 }
 
 -- Layouts
@@ -159,28 +153,17 @@ awful.screen.connect_for_each_screen(function(s)
 		filter  = awful.widget.taglist.filter.noempty,
 		buttons = taglist_buttons,
 		widget_template = {
-			--[[
-			{ -- Margins
-				{ -- Instance count
-					id = "client_icon",
-					widget = wibox.widget.imagebox
+			{ -- margin ???
+				{ -- text
+					id = "index_role",
+					widget = wibox.widget.textbox,
 				},
-				margins = 10,
-				widget = wibox.container.margin
-			},]]--
-			{
-				{
-					id = "text_role",
-					widget = wibox.widget.textbox
-				},
-				margins = 10,
-				widget = wibox.container.margin
+				--bg = "#a6e3a1",
+				--shape = gears.shape.square,
+				widget = wibox.container.background,
 			},
-			layout = wibox.layout.fixed.horizontal,
-			create_callback = function(self, c, index, objects)
-			end,
-			update_callback = function(self, c, index, objects)
-			end,
+			widget = wibox.container.margin,
+			margins = 10,
 		},
 	}
 
@@ -238,28 +221,75 @@ awful.screen.connect_for_each_screen(function(s)
 	end)
 	--}}}
 
-	--}}} Dock
-	require("decor.dock")
-	local bottom_dock_w = 850
-	local bottom_dock_h = 64
-	local bottom_dock = Create_dock(s, bottom_dock_w, bottom_dock_h, 8)
-	local dock_apps = decor.apps()
-	bottom_dock:setup {
+	--{{{ Custom bar
+	local primary_s_width = screen[1].geometry.width
+	local primary_s_height = screen[1].geometry.height
+
+	local mybar_width = 850
+	local mybar_height = 64
+
+	local mybar = wibox {
+		screen = screen[1], -- primary display
+		type = "dock",
+		ontop = false,
+		visible = true,
+
+		width = mybar_width,
+		height = mybar_height,
+		--bg = "#34ebc0",
+
+		shape = function(cr, width, height)
+			gears.shape.rounded_rect(cr, width, height, 8)
+		end,
+	}
+
+	--{{{ Firefox Button and Functionality
+	local firefox_button = wibox.widget {
 		{
-			dock_apps.firefox,
-			dock_apps.thunar,
-			dock_apps.kitty,
+			{
+				widget = wibox.widget.imagebox,
+				image = "/usr/share/icons/Papirus/64x64/apps/firefox.svg",
+				resize = true,
+				opacity = 1,
+			},
+			margins = dpi(4),
+			widget = wibox.container.margin
+		},
+		--bg = color.background_dark,
+		shape = function(cr, width, height) gears.shape.rounded_rect(cr, width, height, 8) end,
+		widget = wibox.container.background,
+		forced_height = dpi(64),
+		forced_width = dpi(64),
+	}
+
+	firefox_button:connect_signal("button::press", function(c)
+		c:set_bg("#181926")
+		awful.spawn.with_shell("firefox")
+	end)
+	firefox_button:connect_signal("button::release", function(c)
+		c:set_bg("#1e2030")
+	end)
+
+	firefox_button:connect_signal("mouse::enter", function(c) c:set_bg("#24273a") end)
+	firefox_button:connect_signal("mouse::leave", function(c) c:set_bg("#1e2030") end)
+	--}}}
+
+	mybar:setup {
+		{
+			firefox_button,
 			layout = wibox.layout.fixed.horizontal,
 		},
 		widget = wibox.container.background,
 	}
 
-	bottom_dock:struts{ bottom = (bottom_dock_h + 10) }
+	mybar:struts{ bottom = (mybar_height + 10) }
 
-	awful.placement.bottom(bottom_dock, { margins = { bottom = 10 }, parent = awful.screen.focused() } )
+	awful.placement.bottom(mybar, { margins = { bottom = 10 }, parent = awful.screen.focused() } )
+	--}}}
+
 	-- Create the wibox
 	s.mywibox = awful.wibar({ position = "top", screen = s })
-	--}}}
+
 
 	-- Add widgets to the wibox
 	s.mywibox:setup {

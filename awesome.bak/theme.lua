@@ -15,24 +15,50 @@ theme.font          = "JetBrainsMono NF 12"
 
 theme.osu_icon = "/home/tyler/.config/awesome/icons/osu_logo.svg"
 
-local colors = require("decor.colors")
-local catppuccin = colors()
+catppuccin = {
+    rosewater = "#f4dbd6",
+    flamingo = "#f0c6c6",
+    pink = "#f5bde6",
+    muave = "#c6a0f6",
+    red = "#ed8796",
+    maroon = "#ee99a0",
+    peach = "#f5a97f",
+    yellow = "#eed49f",
+    green = "#a6da95",
+    teal = "#8bd5ca",
+    sky = "#91d7e3",
+    sapphire = "#7dc4e4",
+    blue = "#8aadf4",
+    lavender = "#b7bdf8",
+    text = "#cad3f5",
+    subtext1 = "#b8c0e0",
+    subtext0 = "#a5adcb",
+    overlay2 = "#939ab7",
+    overlay1 = "#8087a2",
+    overlay0 = "#6e738d",
+    surface2 = "#5b6078",
+    surface1 = "#494d64",
+    surface0 = "#363a4f",
+    base = "#24273a",
+    mantle = "#1e2030",
+    crust = "#181926",
+}
 
 theme.bg_normal     = catppuccin.mantle
 theme.bg_focus      = catppuccin.base
-theme.bg_urgent     = catppuccin.red
-theme.bg_minimize   = catppuccin.rosewater
+theme.bg_urgent     = "#ff0000"
+theme.bg_minimize   = "#444444"
 theme.bg_systray    = theme.bg_normal
 
-theme.fg_normal     = catppuccin.subtext1
+theme.fg_normal     = catppuccin.text
 theme.fg_focus      = catppuccin.text
-theme.fg_urgent     = catppuccin.text
-theme.fg_minimize   = catppuccin.text
+theme.fg_urgent     = "#ffffff"
+theme.fg_minimize   = "#ffffff"
 
 theme.useless_gap   = dpi(4)
 theme.border_width  = dpi(3)
-theme.border_normal = catppuccin.red
-theme.border_focus  = catppuccin.green
+theme.border_normal = catppuccin.sky
+theme.border_focus  = catppuccin.teal
 theme.border_marked = catppuccin.yellow
 
 -- There are other variable sets
