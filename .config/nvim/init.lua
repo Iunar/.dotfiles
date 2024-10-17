@@ -1,6 +1,3 @@
-require('options')
-require('plugins')
-require('lsp')
-
--- Custom function in ./after/plugin/colors.lua
-set_scheme("catppuccin-mocha", true)
+require("config.options")
+require("config.lazy")
+require("config.plugins")
