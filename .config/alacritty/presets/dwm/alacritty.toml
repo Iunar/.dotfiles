@@ -1,0 +1,13 @@
+general.import = [ "theme.toml", "globals.toml" ]
+[window]
+# opacity = 0.62
+
+[terminal]
+shell = "/bin/zsh"
+
+[font]
+# normal = { family = "JetBrainsMono Nerd Font", style = "Regular" }
+normal = { family = "Mononoki Nerd Font", style = "Regular" }
+# normal = { family = "cozette", style = "Regular" }
+# bold = { family = "cozette", style = "Regular" }
+size = 14.0
