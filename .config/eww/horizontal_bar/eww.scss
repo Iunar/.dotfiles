@@ -1,0 +1,59 @@
+* {
+  font-family: JetBrainsMonoNF;
+  font-size: 12px;
+}
+
+$bg: #000000;
+$fg: #ffffff;
+
+.sysinfo {
+  margin: 4px;
+  padding-right: 4px;
+  padding-left: 4px;
+  background: $bg;
+}
+
+.mediactl {
+  margin: 4px;
+  padding-right: 4px;
+  padding-left: 4px;
+  background: $bg;
+  button:hover {
+    background: $fg;
+  }
+}
+
+.volume_scale {
+  all: unset;
+}
+
+.volume_scale trough highlight {
+  all: unset;
+  min-height: 12px;
+  min-width: 64px;
+}
+
+.volume_scale trough {
+  background: $bg;
+}
+.volume_scale highlight {
+  background: $fg;
+}
+
+.media_skip {
+  all: unset;
+  background: blue;
+  margin-top: 4px;
+  margin-bottom: 4px;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+.play_pause {
+  all: unset;
+  background: blue;
+  margin-top: 4px;
+  margin-bottom: 4px;
+  padding-left: 6px;
+  padding-right: 10px;
+}

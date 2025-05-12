@@ -1,0 +1,28 @@
+# Edit of Campbell (Windows 10 default)
+
+# Default colors
+[colors.primary]
+background = '#C0C7C8'
+foreground = '#000000'
+
+# Normal colors
+[colors.normal]
+black      = '#0c0c0c'
+red        = '#c50f1f'
+green      = '#13a10e'
+yellow     = '#c19c00'
+blue       = '#1B6ACB'
+magenta    = '#881798'
+cyan       = '#1B6ACB'
+white      = '#FDFDFC'
+
+# Bright colors
+[colors.bright]
+black      = '#0c0c0c'
+red        = '#c50f1f'
+green      = '#13a10e'
+yellow     = '#c19c00'
+blue       = '#1B6ACB'
+magenta    = '#881798'
+cyan       = '#1B6ACB'
+white      = '#FDFDFC'

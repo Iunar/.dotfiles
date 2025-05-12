@@ -1,0 +1,112 @@
+(defwindow vertical_bar
+           :monitor 0
+           :geometry (geometry :x 0
+                               :y 0
+                               :width 48
+                               :height "100%"
+                               :anchor "center left")
+           :stacking "fg"
+					 :exclusive true
+           :windowtype "dock"
+           :wm-ignore false
+  (bar))
+
+(defwidget bar []
+	(centerbox
+		:orientation "v"
+			(top)
+			(middle)
+			(bottom)))
+
+(defwidget top []
+	(box
+		:orientation "v"
+		:valign "start"
+		:space-evenly false
+		;:spacing 0
+		;(label :class "icon" :text "󰣇")
+		;(label :class "icon" :text "")
+		(label :class "icon" :text "")
+		(workspaces)))
+(defwidget workspaces []
+	(literal :content workspaces))
+
+
+(defwidget middle []
+	(box
+		:orientation "v"
+		:valign "center"
+			(clock)))
+(defwidget clock []
+	(box
+		:class "clock"
+		:orientation "v"
+		(label :class "hours" :text "${hours}")
+		(label :class "minutes" :text "${minutes}")
+		(label :class "seconds" :text "${seconds}")))
+
+
+(defwidget bottom []
+	(box
+		:class "bottom"
+		:orientation "v"
+		:space-evenly false
+		:valign "end"
+		:vexpand false
+			(volume_slider)
+			(power_menu)))
+
+(defwidget volume_slider []
+	(eventbox
+		:onhover "eww update volume_rev=true"
+		:onhoverlost "eww update volume_rev=false"
+		(box
+			:class "volume_box"
+			:orientation "v"
+			:vexpand false
+			:space-evenly false
+			(revealer
+				:transition "slideup"
+				:reveal volume_rev
+				:duration "350ms"
+				(scale
+					:class "volume_bar"
+					:orientation "v"
+					:flipped true
+					:value volume_percent
+					:min 0
+					:max 101
+					:onchange "amixer -D pulse sset Master {}%"))
+			(label :class "volume_label" :text " "))))
+(defvar volume_rev false)
+
+(defwidget power_menu []
+	(eventbox 
+		:onhover "eww update power_rev=true"
+		:onhoverlost "eww update power_rev=false"
+		(box
+			:orientation "v"
+			:space-evenly false
+			:class "power_menu"
+			(revealer
+				:transition "slideup"
+				:reveal power_rev
+				:duration "350ms"
+				(box
+					:orientation "v"
+					:space-evenly false
+					(button :class "logout" :tooltip "logout" :onclick "hyprctl dispatch exit" "󰗽")
+					(button :class "reboot" :tooltip "reboot" :onclick "reboot" "")))
+			(button :class "shutdown" :tooltip "shutdown" :onclick "shutdown now" ""))))
+
+(defvar power_rev false)
+
+(defpoll hours
+	:interval "1s" "scripts/time.sh H")
+(defpoll minutes
+	:interval "1s" "scripts/time.sh M")
+(defpoll seconds
+	:interval "1s" "scripts/time.sh S")
+(deflisten workspaces
+	:initial "nothing" "scripts/workspace.sh")
+(defpoll volume_percent :interval "3s" "amixer -D pulse sget Master | grep 'Left:' | awk -F'[][]' '{ print $2 }' | tr -d '%'")

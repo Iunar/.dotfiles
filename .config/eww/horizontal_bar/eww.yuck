@@ -1,0 +1,102 @@
+(defwindow main
+	:monitor 0
+	:geometry (geometry
+		:x 0
+		:y 0
+		:width "100%"
+		:height "28px"
+		:anchor "top center")
+	:stacking "bg"
+	:exclusive true
+	:windowtype "dock"
+	:wm-ignore false
+	(centerbox
+		:orientation "h"
+		;;:space-evenly false
+		;;:spacing 12
+		(left)
+		(center)
+		(right)))
+
+(defwidget left []
+		(box
+			:orientation "h"
+			:halign "start"
+		(sysinfo)))
+(defwidget center []
+		(box
+			:orientation "h"
+			:halign "center"
+		(mediactl)))
+(defwidget right []
+		(box
+			:orientation "h"
+			:halign "end"
+			(sysinfo)))
+
+(defwidget sysinfo []
+	(box
+		:class "sysinfo"
+		;;:halign "start"
+		:orientation "h"
+		:spacing 8
+		:space-evenly false
+		(label :class "mem_usage" :text "  ${round(100 * ((memtotal - memavailable) / memtotal), 0)}%")
+		(label :class "uptime" :text "󱐋 ${uptime}")))
+
+(defwidget mediactl []
+	(box
+		:orientation "h"
+		:class "mediactl"
+		:halign "end"
+		:spacing 4
+		:space-evenly false
+		(label :text "${mediainfo}")
+		(eventbox
+			:onhover "eww update volume_reveal=true"
+			:onhoverlost "eww update volume_reveal=false"
+			(box
+				:orientation "h"
+				:hexpand false
+				:space-evenly false
+				(button :onclick "" :hexpand false " ")
+				(revealer
+					:transition "slideright"
+					:reveal volume_reveal
+					:duration "350ms"
+						(scale 
+							:min 0
+							:max 101
+							:class "volume_scale"
+							:flipped false
+							:value volume_percentage
+							:onchange "amixer -D pulse sset Master {}%"))))
+		(button :class "media_skip" :onclick "playerctl previous" "󰒮")
+		(button :class "play_pause" :onclick "playerctl play-pause" "")
+		(button :class "media_skip" :onclick "playerctl next" "󰒭")))
+(defvar volume_reveal false)
+
+(defpoll volume_percentage
+	:interval "1s" "scripts/volume.sh")
+(defpoll memtotal 
+	:interval "1s" "scripts/mem.sh total")
+(defpoll memavailable
+	:interval "1s" "scripts/mem.sh available")
+(defpoll uptime
+	:interval "1s" "scripts/uptime.sh")
+(defpoll mediainfo
+	:interval "1s" "scripts/media.sh")
+	
+
+	;; L A Y O U T
+	;; power menu
+	;; volume
+	;; playbackctl
+	;; systray
+	;; workspaces
+	;; generic theme colors
+	;; splash screen
+	;;
+	;;
+	;;
+	;;

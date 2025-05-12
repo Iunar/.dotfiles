@@ -1,0 +1,149 @@
+* {
+  all: unset;
+  font-family: JetBrainsMono Nerd Font;
+  font-size: 18px;
+}
+
+$black: #000000;
+$white: #ffffff;
+$grey: #232A2E;
+$red: #f38ba8;
+$sapphire: #74c7ec;
+$green: #a6e3a1;
+$blue: #89b4fa;
+
+$bg0: #11111b;
+$bg1: #181825;
+$bg2: #1e1e2e;
+$bg3: #313244;
+$bg4: #45475a;
+$bg5: #585b70;
+$bg6: #6c7086;
+
+$fg0: #cdd6f4;
+$fg1: #bac2de;
+$fg2: #a6adc8;
+
+$gaps: 10px;
+$rounding: 0px;
+
+.vertical_bar {
+  background-color: $bg0;
+  border-radius: $rounding;
+}
+
+.icon {
+  background-color: $bg0;
+  color: $sapphire;
+  padding-top: 6px;
+  padding-right: 9px;
+  border-radius: $rounding;
+  font-size: 30px;
+}
+
+.workspaces {
+  background-color: $bg2;
+  border-radius: $rounding;
+  margin: 6px;
+  button {
+    transition: 0.4s;
+    background-color: $bg2;
+    border-radius: $rounding;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    padding-left:5px;
+  }
+  button:hover {
+    background-color: $bg3;
+  }
+}
+
+.active_workspace {
+  color: $fg0;
+  font-weight: bold;
+}
+
+.inactive_workspace {
+  color: $fg0;
+}
+
+.clock {
+  border-radius: $rounding;
+  background-color: $bg2;
+
+  font-weight: bold;
+
+  margin: 6px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+
+  .hours {
+    color: $fg0
+  }
+  .minutes {
+    color: $fg0
+  }
+  .seconds {
+    color: $fg2
+  }
+}
+
+.bottom {
+  margin: 6px;
+  background-color: $bg2;
+  border-radius: $rounding;
+  font-size: large;
+  font-weight: bold;
+  //padding-top: 4px;
+}
+
+.power_menu {
+  button {
+    //font-size: 48px; // does nothing?
+    border-radius: $rounding;
+    padding-right: 2px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    transition: 0.4s;
+  }
+  button:hover {
+    background-color: $bg3;
+  }
+  .volume_box {
+    padding-top: 6px;
+  }
+}
+
+.logout {
+  color: $green;
+}
+.reboot {
+  color: $sapphire;
+}
+.shutdown {
+  color: $red;
+}
+
+.volume_label {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  color: $green;
+}
+
+.volume_bar {
+  padding-top: 6px;
+}
+
+.volume_bar trough {
+  all:unset;
+  background-color: $bg3;
+  border-radius: $rounding;
+  min-width: 12px;
+  min-height: 64px;
+}
+
+.volume_bar highlight {
+  all:unset;
+  background-color: $blue;
+  border-radius: $rounding;
+}
