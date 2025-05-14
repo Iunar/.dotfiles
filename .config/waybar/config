@@ -1,18 +1,120 @@
 {
-	"name": "barmain",
-    "layer": "top",
-	"position": "top",
-    "modules-left": ["hyprland/workspaces"],
-    "modules-center": ["hyprland/window"],
-    "modules-right": ["battery", "clock"],
-    "hyprland/window": {
-        "max-length": 50
+	// "layer": "top", // Waybar at top layer
+	"position": "bottom", // Waybar position (top|bottom|left|right)
+	// "height": 14, // Waybar height (to be removed for auto height)
+	// "width": 1280, // Waybar width
+
+	// Choose the order of the modules
+	"modules-left": ["river/tags", "river/mode"],
+	"modules-center": ["river/window"],
+	"modules-right": ["custom/disk_home", "custom/disk_root","temperature", "cpu", "memory", "pulseaudio", "clock", "idle_inhibitor", "tray"],
+
+	// Modules configuration
+	"river/tags": {
+		"num-tags": 6,
+		"tag-labels": [ "一", "二", "三", "四", "五", "六" ]
+	},
+	"river/mode": {
+		"format": "{}"
+	},
+	"custom/disk_home": {
+		"format": "🏠 {} ",
+		"interval": 30,
+		"exec": "df -h --output=avail $HOME | tail -1 | tr -d ' '"
+	},
+	"custom/disk_root": {
+		"format": "💽 {} ",
+		"interval": 30,
+		"exec": "df -h --output=avail / | tail -1 | tr -d ' '"
+	},
+	"temperature": {
+		"critical-threshold": 80,
+		"format": "<span color='#e88939'>{icon}</span> {temperatureC}°C",
+		"format-icons": ["", "", ""]
+	},
+	"cpu": {
+		"format": "🏭 {usage}%",
+		"tooltip": false
+	},
+	"memory": {
+		"format": "💾 {used:0.1f}G"
+	},
+	"pulseaudio": {
+		// "scroll-step": 1, // %, can be a float
+		"format": "{icon} {volume}% {format_source}",
+		"format-muted": "🔇 {format_source}",
+		"format-bluetooth": "{icon} {volume}% {format_source}",
+		"format-bluetooth-muted": "🔇 {format_source}",
+
+		"format-source": " {volume}%",
+		"format-source-muted": "",
+
+		"format-icons": {
+			"headphones": "",
+			"handsfree": "",
+			"headset": "",
+			"phone": "",
+			"portable": "",
+			"car": "",
+			"default": ["🔈", "🔉", "🔊"]
+		},
+		"on-click": "ponymix -N -t sink toggle",
+		"on-click-right": "ponymix -N -t source toggle"
+	},
+	"clock": {
+		"interval": 1,
+		"format": "⏰ {:%I:%M:%S}",
+		"tooltip-format": "{:%Y-%m-%d | %H:%M:%S}"
+		// "format-alt": "{:%Y-%m-%d}"
+	},
+	"idle_inhibitor": {
+		"format": "<span color='#589df6'>{icon}</span>",
+		"format-icons": {
+			"activated": "󰅶 ",
+			"deactivated": "󰾪 "
+		},
+		"on-click-right": "swaylock -eFfki ~/.config/lockscreen-origin.png"
+	},
+	"tray": {
+		// "icon-size": 21,
+		"spacing": 10
+	},
+    "custom/media": {
+        "format": "{icon} {}",
+        "return-type": "json",
+        "max-length": 40,
+        "format-icons": {
+            "spotify": "",
+            "default": "🎜"
+        },
+        "escape": true,
+        "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
+        // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
     },
-    "battery": {
-        "format": "|  {icon}  {capacity}%  |",
-		"format-icons": ["", "", "", "", ""]
-    },
-    "clock": {
-        "format": "  {:%a, %d. %b  %H:%M}  |"
+    "mpd": {
+        "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ",
+        "format-disconnected": "Disconnected ",
+        "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ",
+        "unknown-tag": "N/A",
+        "interval": 2,
+        "consume-icons": {
+            "on": " "
+        },
+        "random-icons": {
+            "off": "<span color=\"#f53c3c\"></span> ",
+            "on": " "
+        },
+        "repeat-icons": {
+            "on": " "
+        },
+        "single-icons": {
+            "on": "1 "
+        },
+        "state-icons": {
+            "paused": "",
+            "playing": ""
+        },
+        "tooltip-format": "MPD (connected)",
+        "tooltip-format-disconnected": "MPD (disconnected)"
     }
 }
