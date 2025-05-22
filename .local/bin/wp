@@ -1,0 +1,4 @@
+#!/bin/bash
+
+wal -i $1 -o ~/.config/wal/post_script.sh
+echo "$1" > ~/.config/.previous_wallpaper
