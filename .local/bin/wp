@@ -1,4 +1,11 @@
 #!/bin/bash
 
-wal -i $1 -o ~/.config/wal/post_script.sh
-echo "$1" > ~/.config/.previous_wallpaper
+swww img --transition-type center --transition-step 50 $1
+
+if [ "$2" == "--light" ]; then
+	wal -i $1 -n -l
+else 
+	wal -i $1 -n
+fi
+
+YDOTOOL_SOCKET=/tmp/.ydotool_socket ydotool key 56:1 19:1 19:0 56:0

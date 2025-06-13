@@ -1,0 +1,125 @@
+// -*- mode: jsonc -*-
+{
+    "layer": "top", // Waybar at top layer
+    "position": "top", // Waybar position (top|bottom|left|right)
+    "height": 24, // Waybar height (to be removed for auto height)
+    // "width": 1280, // Waybar width
+    "spacing": 4, // Gaps between modules (4px)
+    "modules-left": [
+	//"custom/seperator",
+	"custom/date",
+	"custom/seperator",
+        "custom/clock",
+	"custom/seperator",
+	"custom/weather",
+	"custom/seperator",
+	"custom/temperature",
+    ],
+    "modules-center": [
+        //"dwl/window"
+        "dwl/tags"
+    ],
+    "modules-right": [
+        "pulseaudio",
+	"custom/seperator",
+        "temperature",
+        "cpu",
+	"custom/seperator",
+        "memory"
+    ],
+
+    "dwl/tags": {
+	    "num-tags": 9,
+	    "hide-vacant": false,
+	    "tag-labels": ["", "", "", "", "", "", "", "", ""]
+    },
+
+    "custom/seperator": {
+	    "format": "󰇙"
+    },
+
+    "custom/weather": {
+	"format": "{text}",
+	"interval": 300,
+	"exec": "weather weather"
+    },
+    "custom/temperature": {
+	"format": "{text}",
+	"interval": 300,
+	"exec": "weather temperature"
+    },
+    "custom/sunset": {
+	"format": "{text}",
+	"interval": 300,
+	"exec": "weather sunset"
+    },
+
+    "mpd": {
+        "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ {volume}% ",
+        "format-disconnected": "Disconnected ",
+        "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ",
+        "unknown-tag": "N/A",
+        "interval": 5,
+        "consume-icons": {
+            "on": " "
+        },
+        "random-icons": {
+            "off": "<span color=\"#f53c3c\"></span> ",
+            "on": " "
+        },
+        "repeat-icons": {
+            "on": " "
+        },
+        "single-icons": {
+            "on": "1 "
+        },
+        "state-icons": {
+            "paused": "",
+            "playing": ""
+        },
+        "tooltip-format": "MPD (connected)",
+        "tooltip-format-disconnected": "MPD (disconnected)"
+    },
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        }
+    },
+    "tray": {
+        // "icon-size": 21,
+        "spacing": 10
+    },
+    "custom/date": {
+	"interval": 300,
+	"tooltip": false,
+	"exec": "get-fancy-date",
+	"format": " 󰸘 {text}"
+    },
+    "custom/clock": {
+	"interval": 60,
+	"tooltip": false,
+	"exec": "date '+%l:%M%p'",
+	"format": "󱑂 {text}"
+    },
+    "cpu": {
+        "format": "{usage}% ",
+        "tooltip": false
+    },
+    "memory": {
+        "format": "{}%  "
+    },
+    "temperature": {
+        "critical-threshold": 80,
+        "format": "{temperatureC}°C"
+    },
+    "pulseaudio": {
+        // "scroll-step": 1, // %, can be a float
+        "format": "{volume}% {icon}",
+        "format-icons": {
+            "default": ["", "", ""]
+        },
+        "on-click": "pavucontrol"
+    }
+}

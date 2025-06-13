@@ -1,0 +1,13 @@
+#!/bin/bash
+
+if [ "$1" == "" ]; then
+    weather=$(curl -s wttr.in\?format="%C")
+    temperature=$(curl -s wttr.in\?format="%f")
+    echo "today it is ${weather,} and it feels like ${temperature}"
+elif [ "$1" == "weather" ]; then
+    echo $(curl -s wttr.in\?format="%c%C")
+elif [ "$1" == "temperature" ]; then
+    echo "Feels Like $(curl -s wttr.in\?format="%f")"
+elif [ "$1" == "sunset" ]; then
+    echo $(curl -s wttr.in\?format="%s")
+fi

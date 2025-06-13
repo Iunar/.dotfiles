@@ -1,0 +1,57 @@
+@import "/home/halcyon/.cache/wal/colors-waybar.css";
+
+* {
+    /* `otf-font-awesome` is required to be installed for icons */
+    all: unset;
+    /* font-family: JetBrainsMono NF; */
+    font-family: Maple Mono;
+    font-size: 16px;
+}
+
+window#waybar {
+    background-color: @background;
+}
+
+#tags {
+    /*margin: 12;
+    border-radius: 12;
+    background: @background;*/
+    padding: 2 4 2 4;
+    color: @foreground;
+}
+
+#tags button {
+    background-color: @background;
+    /* Padding is (n + 6) */
+    padding: 2 14 2 8;
+}
+#tags button.occupied {
+    color: @color13;
+}
+#tags button.focused {
+    color: @color10;
+}
+#tags button.urgent {
+    color: @ff4500;
+}
+
+#window {
+	color: @foreground;
+}
+
+#custom-date,
+#custom-clock,
+#custom-seperator {
+    color: @foreground;
+}
+
+#cpu,
+#memory,
+#disk,
+#temperature,
+#pulseaudio,
+#tray {
+    padding: 0 8;
+    color: @foreground;
+    background-color: @background;
+}

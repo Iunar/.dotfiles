@@ -1,0 +1,58 @@
+#!/bin/bash
+
+if [ "$1" == "list" ]; then
+	echo -e "ghibli\neva-pink\njapanese-light\njapanese\ngrey-anime\nnorther-lights\nsummer-flowers\nsky-blue"
+elif [ "$1" == "ghibli" ]; then
+	$HOME/.local/bin/wp $HOME/Pictures/Wallpapers/Themed/ghibli.png
+	dconf write /org/gnome/desktop/interface/gtk-theme "'ghibli'"
+	papirus-folders -C green --theme Papirus-Dark
+	dconf write /org/gnome/desktop/interface/icon-theme "'Papirus'"
+elif [ "$1" == "eva-pink" ]; then
+	$HOME/.local/bin/wp $HOME/Pictures/Wallpapers/Themed/eva-pink.jpg
+	dconf write /org/gnome/desktop/interface/gtk-theme "'ghibli'"
+	papirus-folders -C green --theme Papirus-Dark
+	dconf write /org/gnome/desktop/interface/icon-theme "'Papirus'"
+elif [ "$1" == "japanese-light" ]; then
+	$HOME/.local/bin/wp $HOME/Pictures/Wallpapers/Themed/japanese.png --light
+	dconf write /org/gnome/desktop/interface/gtk-theme "'japanese-light'"
+	papirus-folders -C white --theme Papirus-Light
+	dconf write /org/gnome/desktop/interface/icon-theme "'Papirus'"
+elif [ "$1" == "japanese" ]; then
+	$HOME/.local/bin/wp $HOME/Pictures/Wallpapers/Themed/japanese.png
+	dconf write /org/gnome/desktop/interface/gtk-theme "'japanese-dark'"
+	papirus-folders -C black --theme Papirus-Dark
+	dconf write /org/gnome/desktop/interface/icon-theme "'Papirus'"
+elif [ "$1" == "grey-anime" ]; then
+	$HOME/.local/bin/wp $HOME/Pictures/Wallpapers/Themed/grey-anime.jpg
+	dconf write /org/gnome/desktop/interface/gtk-theme "'grey-anime'"
+	papirus-folders -C bluegrey --theme Papirus-Dark
+	dconf write /org/gnome/desktop/interface/icon-theme "'Papirus'"
+elif [ "$1" == "northern-lights" ]; then
+	$HOME/.local/bin/wp $HOME/Pictures/Wallpapers/Themed/northern-lights.jpg
+	dconf write /org/gnome/desktop/interface/gtk-theme "'northern-lights'"
+	papirus-folders -C teal --theme Papirus-Dark
+	dconf write /org/gnome/desktop/interface/icon-theme "'Papirus'"
+elif [ "$1" == "summer-flowers" ]; then
+	$HOME/.local/bin/wp $HOME/Pictures/Wallpapers/Themed/summer-flowers.jpg --light
+	dconf write /org/gnome/desktop/interface/gtk-theme "'summer-flowers'"
+	papirus-folders -C green --theme Papirus-Light
+	dconf write /org/gnome/desktop/interface/icon-theme "'Papirus'"
+elif [ "$1" == "green-anime" ]; then
+	$HOME/.local/bin/wp $HOME/Pictures/Wallpapers/Themed/green-anime.jpg
+	dconf write /org/gnome/desktop/interface/gtk-theme "'green-anime'"
+	papirus-folders -C teal --theme Papirus-Light
+	dconf write /org/gnome/desktop/interface/icon-theme "'Papirus'"
+elif [ "$1" == "green-anime-light" ]; then
+	$HOME/.local/bin/wp $HOME/Pictures/Wallpapers/Themed/green-anime.jpg --light
+	dconf write /org/gnome/desktop/interface/gtk-theme "'green-anime-light'"
+	papirus-folders -C teal --theme Papirus-Light
+	dconf write /org/gnome/desktop/interface/icon-theme "'Papirus'"
+elif [ "$1" == "sky-blue" ]; then
+	$HOME/.local/bin/wp $HOME/Pictures/Wallpapers/Themed/sky-blue.jpg --light
+	dconf write /org/gnome/desktop/interface/gtk-theme "'sky-blue'"
+	papirus-folders -C blue --theme Papirus-Light
+	dconf write /org/gnome/desktop/interface/icon-theme "'Papirus'"
+else
+	echo "Invalid theme"
+fi
+

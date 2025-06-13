@@ -1,0 +1,33 @@
+# This file contains fish universal variable definitions.
+# VERSION: 3.0
+SETUVAR __fish_initialized:3800
+SETUVAR fish_color_autosuggestion:5c7070
+SETUVAR fish_color_cancel:0E6332\x1e\x2d\x2dreverse
+SETUVAR fish_color_command:634C2C
+SETUVAR fish_color_comment:5c7070
+SETUVAR fish_color_cwd:634C2C
+SETUVAR fish_color_cwd_root:0E6332
+SETUVAR fish_color_end:0B5B44
+SETUVAR fish_color_error:0E6332
+SETUVAR fish_color_escape:19B553
+SETUVAR fish_color_history_current:\x2d\x2dbold
+SETUVAR fish_color_host:06704C
+SETUVAR fish_color_host_remote:06704C
+SETUVAR fish_color_normal:c2c6c6
+SETUVAR fish_color_operator:0B9A62
+SETUVAR fish_color_param:06704C
+SETUVAR fish_color_quote:0B5B44
+SETUVAR fish_color_redirection:19B553
+SETUVAR fish_color_search_match:\x2d\x2dbackground\x3d5c7070
+SETUVAR fish_color_selection:\x2d\x2dbackground\x3d5c7070
+SETUVAR fish_color_status:0E6332
+SETUVAR fish_color_user:634C2C
+SETUVAR fish_color_valid_path:\x2d\x2dunderline
+SETUVAR fish_greeting:\x1d
+SETUVAR fish_key_bindings:fish_default_key_bindings
+SETUVAR fish_pager_color_completion:c2c6c6
+SETUVAR fish_pager_color_description:5c7070
+SETUVAR fish_pager_color_prefix:634C2C
+SETUVAR fish_pager_color_progress:5c7070
+SETUVAR fish_pager_color_selected_background:\x2d\x2dbackground\x3d5c7070
+SETUVAR fish_user_paths:/home/halcyon/\x2elocal/bin
